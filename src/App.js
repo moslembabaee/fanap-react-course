@@ -17,6 +17,7 @@ import Link from '@material-ui/core/Link';
 import cards from './blogPosts'
 
 const useStyles = makeStyles((theme) => ({
+
   icon: {
     marginRight: theme.spacing(2),
   },
@@ -46,9 +47,17 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(6),
   },
+  cardHeader: { "display": "flex", "justifyContent": "center", "alignItems": "center", "flexDirection": "row", "boxSizing": "border-box" },
+  cardHeaderLogo: {"backgroundColor":"#e8e8e8","borderRadius":"50%","width":"30px","height":"30px","textAlign":"center","margin":"10px","padding":"2px","paddingTop":"5px"},
+  cardHeaderLS: {
+  },
+  cardHeaderContent: {
+  },
+  cardHeaderText: {
+  },
+  cardDate: {
+  },
 }));
-
-// const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 export default function Album() {
   const classes = useStyles();
@@ -70,17 +79,31 @@ export default function Album() {
             {cards.map((card) => (
               <Grid item key={card.id} xs={12} sm={6} md={4}>
                 <Card className={classes.card}>
+                  <CardContent className={classes.cardContent}>
+                    <div className={classes.cardHeader}>
+                      <div className={classes.cardHeaderLogo}>
+                        <div className={classes.cardHeaderLS}>
+                          d
+                        </div>
+                      </div>
+                      <div className={classes.cardHeaderContent}>
+                        <h3 className={classes.cardHeaderText}>
+                        {card.title}
+                        </h3>
+                        <div className={classes.cardDate}>
+                          1399
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
                   <CardMedia
                     className={classes.cardMedia}
-                    image="https://source.unsplash.com/random"
+                    image={process.env.PUBLIC_URL + '/postImages/' + card.cover}
                     title="Image title"
                   />
                   <CardContent className={classes.cardContent}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      {card.title}
-                    </Typography>
                     <Typography>
-                      This is a media card. You can use this section to describe the content.
+                      {card.description}
                     </Typography>
                   </CardContent>
                   <CardActions>
